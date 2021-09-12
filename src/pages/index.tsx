@@ -51,6 +51,7 @@ export async function getStaticProps() {
   const categoriesRes = await fetcher(`/wp-json/wc/v3/products/categories`)
   const unfilteredCategories = await categoriesRes.json()
 
+  console.log(unfilteredCategories)
   const categories = unfilteredCategories.filter((item: Product) => {
     return item.name !== 'Uncategorized'
   })

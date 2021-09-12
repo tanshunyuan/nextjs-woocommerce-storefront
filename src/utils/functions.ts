@@ -35,11 +35,12 @@ export const authorizeUser = async (req: NextApiRequest) => {
 
 export const fetcher = async (url: string) => {
   const token = authorizeAdmin()
+  console.log(token)
 
+  console.log(process.env.NEXT_PUBLIC_WP_API_URL + url)
   return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
       Authorization: `Bearer ${token}`,
-
       'Content-Type': 'application/json',
     },
     credentials: 'include',
@@ -53,7 +54,6 @@ export const poster = async (url: string, data: object, method: string) => {
   return fetch(process.env.NEXT_PUBLIC_WP_API_URL + url, {
     headers: {
       Authorization: `Bearer ${token}`,
-
       'Content-Type': 'application/json',
     },
     method: method,
